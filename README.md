@@ -4,10 +4,10 @@
  
  <p>Projeto desenvolvido para listar os repositórios favoritos do usuário.</p>
  <p>A base de repositórios usada foi o GitHub.</p>
- <p>Para testar escreva o nome do usuário do repositório / o nome do repositório <br />
-  <strong>Exemplo: agular/angular </strong>
+ <p>Para testar escreva o nome do usuário do repositório / o nome do repositório 
+  <strong>"Exemplo: agular/angular" </strong>
   </p>
-  
+  <br />  <br />
   <dl>
     <dt>Funcionabilidades:<dt>
   <dd>Busca e listagem</dd>
@@ -31,7 +31,7 @@
 	<li>useState</li>
 	<li>useEffect</li>
 	<li>try/catch/finally/trow</li>
-	<li>Link/li>
+	<li>Link</li>
 	<li>encodeURIComponent/dencodeURIComponent</li>
 	<li>Promisse</li>
 	
