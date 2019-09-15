@@ -35,6 +35,5 @@
 	<li>encodeURIComponent/dencodeURIComponent</li>
 	<li>Promisse</li>
 	
-	</ul>
 
 </div>
