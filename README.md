@@ -16,9 +16,9 @@
   <dd>Paginação</dd>
   <dd>Filtro por issues: todas, abertas e fechadas</dd>
   <dl>
-    
+      <br />  <br />
    <h4>Linguagens usadas: Html5, Javascript</h4>
-   
+     <br />  <br />
    <h4>Ferramentas usadas:</h4>
     <ul>
 	<li>ReactJS</li>
