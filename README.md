@@ -9,7 +9,7 @@
   </p>
   <br />  <br />
   <dl>
-    <dt>Funcionabilidades:<dt>
+    <dt>Funcionalidades:<dt>
   <dd>Busca e listagem</dd>
   <dd>Listagem de issues</dd>
   <dd>Listagem de usuários</dd>
