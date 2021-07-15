@@ -1,6 +1,6 @@
 import styled, { keyframes, css } from 'styled-components';
 
-export const Conteiner = styled.div `
+export const Conteiner = styled.div`
     max-width:700px;
     background:#fff;
     border-radius:4px;
@@ -18,14 +18,14 @@ export const Conteiner = styled.div `
     }
 `;
 
-export const Form = styled.form `
+export const Form = styled.form`
     margin-top:30px;
     display:flex;
     flex-direction:row;
 
     input{
         flex:1;
-        border:1px solid ${props => (props.error ? '#ff0000': '#ddd')};
+        border:1px solid ${props => (props.error ? '#ff0000' : '#ddd')};
         padding:10px 15px;
         border-radius:4px;
         font-size:17px;
@@ -34,7 +34,7 @@ export const Form = styled.form `
 
 `;
 
-const animate = keyframes `
+const animate = keyframes`
     from{
         transform: rotate(0deg)
     }
@@ -47,7 +47,7 @@ export const SubmitButtom = styled.button.attrs(props => ({
     type: 'submit',
     disabled: props.loading,
 }))
-`
+    `
     background:#0d2636;
     border:0;
     border-radius:4px;
@@ -74,7 +74,7 @@ export const SubmitButtom = styled.button.attrs(props => ({
 `;
 
 
-export const List = styled.ul `
+export const List = styled.ul`
 
 list-style:none;
 margin-top:20px;
@@ -94,7 +94,7 @@ li{
     }
 `;
 
-export const DeletButton = styled.button.attrs({ 
+export const DeletButton = styled.button.attrs({
     type: 'buttom'
 })`
     margin-left:6px;
@@ -107,4 +107,4 @@ export const DeletButton = styled.button.attrs({
     cursor:pointer;
 
 `
-;
+    ;

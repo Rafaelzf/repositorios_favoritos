@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {Container, Owner, Loading, BackButtom, IssuesList, PageActions, FilterList} from './styles';
+import React, { useEffect, useState } from 'react';
+import { Container, Owner, Loading, BackButtom, IssuesList, PageActions, FilterList } from './styles';
 import api from '../../services/baseUrl';
-import {FaSpinner, FaArrowLeft} from 'react-icons/fa';
+import { FaSpinner, FaArrowLeft } from 'react-icons/fa';
 
 //{decodeURIComponent(match.params.repositorio)}
 
-export default function Repositorio({match}){
+export default function Repositorio({ match }) {
+
+
 
     const [repositorio, setRrepositorio] = useState({});
 
@@ -16,9 +18,9 @@ export default function Repositorio({match}){
     const [page, setPage] = useState(1);
 
     const [filters, setFilters] = useState([
-        {state: 'all', label:'Todas', active:true},
-        {state: 'open', label:'Abertas', active:false},
-        {state: 'closed', label:'Fechadas', active:false}
+        { state: 'all', label: 'Todas', active: true },
+        { state: 'open', label: 'Abertas', active: false },
+        { state: 'closed', label: 'Fechadas', active: false }
     ]);
 
     const [filterIndex, setFilterIndex] = useState(0);
@@ -26,34 +28,34 @@ export default function Repositorio({match}){
 
 
 
-    useEffect(()=>{
-        async function load(){
+    useEffect(() => {
+        async function load() {
             const nomeRepo = decodeURIComponent(match.params.repositorio);
 
             const [repositorioData, issuesData] = await Promise.all([
                 api.get(`/repos/${nomeRepo}`),
                 api.get(`/repos/${nomeRepo}/issues`, {
-                    params:{
+                    params: {
                         state: filters.find(f => f.active).state,
                         per_page: 5
                     }
                 })
             ]);
 
-           setRrepositorio(repositorioData.data);
-           setIssues(issuesData.data);
-           setLoad(false);
+            setRrepositorio(repositorioData.data);
+            setIssues(issuesData.data);
+            setLoad(false);
         }
 
         load();
     }, [filters, match.params.repositorio]);
 
-    useEffect(()=>{
-        async function loadInssue(){
+    useEffect(() => {
+        async function loadInssue() {
             const nomeRepo = decodeURIComponent(match.params.repositorio);
 
             const response = await api.get(`/repos/${nomeRepo}/issues`, {
-                params:{
+                params: {
                     state: filters[filterIndex].state,
                     page: page,
                     per_page: 5
@@ -66,24 +68,24 @@ export default function Repositorio({match}){
 
     }, [filterIndex, filters, match.params.repositorio, page])
 
-    function handlePage(action){
-        setPage(action === 'back' ? page -1 : page +1)
+    function handlePage(action) {
+        setPage(action === 'back' ? page - 1 : page + 1)
     }
 
-    function handleFilter(index){
+    function handleFilter(index) {
         setFilterIndex(index);
     }
 
-  if(load){
-    return(
-        <Loading>
-            <h1>Carregando....</h1>
-            <FaSpinner color="#fff" size={54} />
-        </Loading>
-    )
-  }
+    if (load) {
+        return (
+            <Loading>
+                <h1>Carregando....</h1>
+                <FaSpinner color="#fff" size={54} />
+            </Loading>
+        )
+    }
 
-    return(
+    return (
         <Container>
             <BackButtom to="/">
                 <FaArrowLeft color="#363636" size={30} />
@@ -97,7 +99,7 @@ export default function Repositorio({match}){
 
             <FilterList active={filterIndex}>
                 {filters.map((filter, index) => (
-                    <button typer="button" key={filter.label} onClick={()=> handleFilter(index)}>
+                    <button typer="button" key={filter.label} onClick={() => handleFilter(index)}>
                         {filter.label}
                     </button>
                 ))}
@@ -105,32 +107,32 @@ export default function Repositorio({match}){
 
 
             <IssuesList>
-                {issues.map(issue =>(
-                     <li key={String(issue.id)}>
-                         <img src={issue.user.avatar_url} alt={issue.user.login} />
+                {issues.map(issue => (
+                    <li key={String(issue.id)}>
+                        <img src={issue.user.avatar_url} alt={issue.user.login} />
 
-                         <div>
-                             <strong>
-                                 <a href={issue.html_url} target="_blank">{issue.title}</a>
+                        <div>
+                            <strong>
+                                <a href={issue.html_url} target="_blank">{issue.title}</a>
 
-                                 {issue.labels.map(label => (
+                                {issue.labels.map(label => (
                                     <span key={String(label.id)}>{label.name}</span>
-                                  ))}
-                             </strong>
+                                ))}
+                            </strong>
 
-                             <p>{issue.user.login}</p>
-                         </div>
-                     </li>
+                            <p>{issue.user.login}</p>
+                        </div>
+                    </li>
                 ))}
             </IssuesList>
 
 
             <PageActions>
-                <button type="button" onClick={()=> handlePage('back')} disabled={page < 2}>
+                <button type="button" onClick={() => handlePage('back')} disabled={page < 2}>
                     Voltar
                 </button>
 
-                <button type="button" onClick={()=> handlePage('next')}>
+                <button type="button" onClick={() => handlePage('next')}>
                     Próxima
                 </button>
 
